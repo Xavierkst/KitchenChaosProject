@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using System.Security.Cryptography;
-// using System.Diagnostics;
 
 public class Player : MonoBehaviour {
 
-    public float moveSpeed = 7f;
-
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] float rotateSpeed = 10f;
     private void Update() {
         Vector2 inputVec = new Vector2(0, 0);
 
@@ -23,11 +21,11 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.D)) {
             inputVec.x = +1f;
         }
-
+        
         inputVec = inputVec.normalized;
         Vector3 moveDir = new Vector3(inputVec.x, 0f, inputVec.y);
-        
         transform.position += moveDir * Time.deltaTime * moveSpeed;
-        Debug.Log(transform.position);
+
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
     }
 }
