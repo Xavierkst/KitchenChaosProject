@@ -8,7 +8,6 @@ public class GameInput : MonoBehaviour {
 
     private void Awake() {
         playerInputActions = new PlayerInputActions();
-
         // Enable the input actions map
         playerInputActions.Player.Enable();
     }
@@ -16,7 +15,7 @@ public class GameInput : MonoBehaviour {
     public Vector2 GetMovementVectorNormalized() {
         Vector2 inputVec = playerInputActions.Player.Move.ReadValue<Vector2>();
         inputVec = inputVec.normalized;
-        Debug.Log(inputVec);
+        // Debug.Log(inputVec);
         return inputVec;
     }
 }
