@@ -22,13 +22,13 @@ public class Player : MonoBehaviour {
         // Let object slide left or right if 2 buttons are being pressed:
         if (!canMove) {
             // Try moving in x direction:
-            Vector3 moveDirX = new Vector3(moveDir.x, 0f, 0f);
+            Vector3 moveDirX = new Vector3(moveDir.x, 0f, 0f).normalized;
             canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDist); 
             if (canMove) {
                 moveDir = moveDirX;
             } else {
                 // can't move X so try Z
-                Vector3 moveDirZ = new Vector3(0f, 0f, moveDir.z);
+                Vector3 moveDirZ = new Vector3(0f, 0f, moveDir.z).normalized;
                 canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDist); 
                 if (canMove) {
                     moveDir = moveDirZ;
