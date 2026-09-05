@@ -8,28 +8,57 @@ public class Player : MonoBehaviour {
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
-
+    float interactDist = 2f;
+    
     private bool isWalking;
     private Vector3 lastInteractDir;
- 
-    private void Update() {
-        HandleMovement();
-        HandleInteraction();
+    private void Start() {
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
-    private void HandleInteraction() {
-        float interactDist = 2f;
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
         if (moveDir != Vector3.zero) {
             lastInteractDir = moveDir;
         }
+
         bool withinInteractDist = Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDist, countersLayerMask);
+        
         if (withinInteractDist) {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
                 clearCounter.interact();
             }
         } 
+
     }
+
+    private void Awake() {
+        lastInteractDir = transform.forward;
+    }
+
+    private void Update() {
+        HandleMovement();
+        // HandleInteraction();
+    }
+
+    private void HandleInteraction() {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        if (moveDir != Vector3.zero) {
+            lastInteractDir = moveDir;
+        }
+
+        bool withinInteractDist = Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDist, countersLayerMask);
+        
+        if (withinInteractDist) {
+            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
+                // clearCounter.interact();
+            }
+        } 
+    }
+
     private void HandleMovement() {
         float playerRadius = .5f;
         float playerHeight = 2f;
@@ -62,8 +91,6 @@ public class Player : MonoBehaviour {
         if (canMove) {
             transform.position += moveDir * moveDist;
         }
-        
-
     }
     public bool IsWalking() {
         return isWalking;
