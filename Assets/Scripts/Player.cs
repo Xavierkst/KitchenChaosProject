@@ -3,34 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
-    float interactDist = 2f;
-    
+    private ClearCounter selectedCounter;
+
+    private float interactDist = 2f;
     private bool isWalking;
     private Vector3 lastInteractDir;
+
     private void Start() {
+        // Add listener fn for when event handler is invoked
         gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
+
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-        if (moveDir != Vector3.zero) {
-            lastInteractDir = moveDir;
+        if (selectedCounter != null) {
+            selectedCounter.interact();
         }
-
-        bool withinInteractDist = Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDist, countersLayerMask);
-        
-        if (withinInteractDist) {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
-                clearCounter.interact();
-            }
-        } 
-
     }
 
     private void Awake() {
@@ -39,7 +30,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         HandleMovement();
-        // HandleInteraction();
+        HandleInteraction();
     }
 
     private void HandleInteraction() {
@@ -51,12 +42,19 @@ public class Player : MonoBehaviour {
         }
 
         bool withinInteractDist = Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDist, countersLayerMask);
-        
+        bool rayHitCounter = false;
         if (withinInteractDist) {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
-                // clearCounter.interact();
-            }
+            rayHitCounter = raycastHit.transform.TryGetComponent(out ClearCounter clearCounter);
+            if (rayHitCounter) {
+                if (clearCounter != selectedCounter) {
+                    selectedCounter = clearCounter;
+                }
+            } 
         } 
+        
+        if (!withinInteractDist || !rayHitCounter) {
+            selectedCounter = null;
+        }
     }
 
     private void HandleMovement() {
@@ -65,8 +63,10 @@ public class Player : MonoBehaviour {
         float moveDist = Time.deltaTime * moveSpeed;
         Vector2 inputVec = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVec.x, 0f, inputVec.y);
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
         isWalking = moveDir != Vector3.zero;
+        if (isWalking) {
+            transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
+        }
 
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDist);
         // Let object slide left or right if 2 buttons are being pressed:

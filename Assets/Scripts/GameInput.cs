@@ -16,6 +16,7 @@ public class GameInput : MonoBehaviour {
     }
 
     private void InteractCounter_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        // if InteractCounter btn pressed, and event handler not null, invoke it
         OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
 
