@@ -11,9 +11,16 @@ public class CounterSelected : MonoBehaviour {
 
     private void Player_OnSelectCounterChanged(object sender, Player.OnCounterChangedEventArgs e) {
         if (e.selectedCounter == this.clearCounter) {
-            visualGameObject.SetActive(true);
+            Show();
         } else {
-            visualGameObject.SetActive(false);
+            Hide();
         }
+    }
+    private void Show() {
+        visualGameObject.SetActive(true);
+    }
+
+    private void Hide() {
+        visualGameObject.SetActive(false);
     }
 }

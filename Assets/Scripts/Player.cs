@@ -9,7 +9,15 @@ public class Player : MonoBehaviour {
         public ClearCounter selectedCounter;
     }
 
-    public static Player Instance { get; private set; }
+    public static Player instance;
+    public static Player Instance {
+        get {
+            return instance;
+        }
+        private set {
+            instance = value;
+        }
+    }
 
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] float rotateSpeed = 10f;
