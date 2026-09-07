@@ -23,7 +23,6 @@ public class GameInput : MonoBehaviour {
     public Vector2 GetMovementVectorNormalized() {
         Vector2 inputVec = playerInputActions.Player.Move.ReadValue<Vector2>();
         inputVec = inputVec.normalized;
-        // Debug.Log(inputVec);
         return inputVec;
     }
 }

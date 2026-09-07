@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ClearCounter : MonoBehaviour {
-    [SerializeField] private Transform tomatoPrefab;
-    [SerializeField] private Transform CounterTopPoint;
+    [SerializeField] private KitchenObjectSO kitchenObjectSO;
+    [SerializeField] private Transform counterTopPoint;
 
+    private KitchenObject kitchenObject;
     public void interact() {
-        Debug.Log("Interacting!");
-        Transform tomatoTransform = Instantiate(tomatoPrefab, CounterTopPoint);
-        tomatoTransform.localPosition = Vector3.zero;
+        if (!kitchenObject) {
+            Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterTopPoint);
+            kitchenObjectTransform.localPosition = Vector3.zero;
+            kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
+            kitchenObject.SetClearCounter(this);
+        } else {
+            // Remove kitchen obj from clear counter
+            // kitchenObject.SetClearCounter(null);
+            // kitchenObject = null;
+            Debug.Log(kitchenObject.GetClearCounter());
+        }
     }
 }
