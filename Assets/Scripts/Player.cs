@@ -1,8 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public event EventHandler<OnCounterChangedEventArgs> OnSelectCounterChanged;
+    public class OnCounterChangedEventArgs : EventArgs {
+        public ClearCounter selectedCounter;
+    }
+
+    public static Player Instance { get; private set; }
+
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] private GameInput gameInput;
@@ -17,15 +25,18 @@ public class Player : MonoBehaviour {
         // Add listener fn for when event handler is invoked
         gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
+    private void Awake() {
+        lastInteractDir = transform.forward;
+        if (Instance != null) {
+            Debug.LogError("Player has more than one instance!");
+        }
+        Instance = this;
+    }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
         if (selectedCounter != null) {
             selectedCounter.interact();
         }
-    }
-
-    private void Awake() {
-        lastInteractDir = transform.forward;
     }
 
     private void Update() {
@@ -47,14 +58,19 @@ public class Player : MonoBehaviour {
             rayHitCounter = raycastHit.transform.TryGetComponent(out ClearCounter clearCounter);
             if (rayHitCounter) {
                 if (clearCounter != selectedCounter) {
-                    selectedCounter = clearCounter;
+                    SetSelectedCounter(clearCounter);
                 }
             } 
         } 
         
         if (!withinInteractDist || !rayHitCounter) {
-            selectedCounter = null;
+            SetSelectedCounter(null);
         }
+    }
+
+    private void SetSelectedCounter(ClearCounter selectedCtr) {
+        this.selectedCounter = selectedCtr;
+        OnSelectCounterChanged?.Invoke(this, new OnCounterChangedEventArgs { selectedCounter = this.selectedCounter });
     }
 
     private void HandleMovement() {
@@ -94,5 +110,8 @@ public class Player : MonoBehaviour {
     }
     public bool IsWalking() {
         return isWalking;
+    }
+    private void SetCounter() {
+
     }
 }

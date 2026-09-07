@@ -84,7 +84,7 @@ PrefabInstance:
     - target: {fileID: 4589716710238282922, guid: 0004cb1e11ad014419b943c7da960724,
         type: 3}
       propertyPath: m_Name
-      value: ClearCounterSelected
+      value: Selected
       objectReference: {fileID: 0}
     - target: {fileID: 4589716710238282922, guid: 0004cb1e11ad014419b943c7da960724,
         type: 3}
@@ -169,7 +169,7 @@ PrefabInstance:
     - target: {fileID: 8489276541531669327, guid: 0004cb1e11ad014419b943c7da960724,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -178,7 +178,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: 0004cb1e11ad014419b943c7da960724,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 261467077021301980}
+      addedObject: {fileID: 7956300655594091277}
   m_SourcePrefab: {fileID: 100100000, guid: 0004cb1e11ad014419b943c7da960724, type: 3}
 --- !u!1 &713584514658362510 stripped
 GameObject:
@@ -186,7 +186,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3915556971968921636}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &261467077021301980
+--- !u!114 &7956300655594091277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,9 +198,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42a9eeebb1fb3f4388f96adc95af428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearCounter: {fileID: 5388132925930378551}
+  visualGameObject: {fileID: 4870962247793263467}
 --- !u!4 &713584514658362511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 0004cb1e11ad014419b943c7da960724,
+    type: 3}
+  m_PrefabInstance: {fileID: 3915556971968921636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4870962247793263467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8489276541531669327, guid: 0004cb1e11ad014419b943c7da960724,
     type: 3}
   m_PrefabInstance: {fileID: 3915556971968921636}
   m_PrefabAsset: {fileID: 0}
