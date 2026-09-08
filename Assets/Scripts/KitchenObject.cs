@@ -18,5 +18,10 @@ public class KitchenObject : MonoBehaviour {
 
     public void SetClearCounter(ClearCounter clearCounter) {
         this.clearCounter = clearCounter;
+        // get the transform that will move the object to the new counter top point. 
+        // Setting this transf as this KitchenObject's parent transform will apply the parent transform to it
+        transform.parent = clearCounter.GetKitchenObjectFollowTransform();
+        // remb to re-set this object's objectSpace to origin/zero just incase
+        transform.localPosition = Vector3.zero; 
     }
 }

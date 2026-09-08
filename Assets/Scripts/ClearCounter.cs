@@ -31,4 +31,8 @@ public class ClearCounter : MonoBehaviour {
             Debug.Log(kitchenObject.GetClearCounter());
         }
     }
+
+    public Transform GetKitchenObjectFollowTransform() {
+        return counterTopPoint;
+    }
 }
