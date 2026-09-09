@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KitchenObject : MonoBehaviour {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
-    private ClearCounter clearCounter;
+    private IKitchenObjectParent kitchenObjectParent;
 
     // Every kitchen obj tracks which clear counter its currently on, and every clear counter tracks which kitchen obj
     // it has.
@@ -12,23 +12,23 @@ public class KitchenObject : MonoBehaviour {
         return kitchenObjectSO;
     }
 
-    public ClearCounter GetClearCounter() {
-        return clearCounter;
+    public IKitchenObjectParent GetKitchenObjectParent() {
+        return kitchenObjectParent;
     }
 
-    public void SetClearCounter(ClearCounter clearCounter) {
-        if (this.clearCounter != null) {
-            this.clearCounter.ClearKitchenObject();
+    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
+        if (this.kitchenObjectParent != null) {
+            this.kitchenObjectParent.ClearKitchenObject();
         }
 
-        if (clearCounter.HasKitchenObject()) {
-            Debug.Log("Counter already has a kitchen object!");
+        if (kitchenObjectParent.HasKitchenObject()) {
+            Debug.Log("KitchenObjectParent already has a kitchen object!");
         }
-        this.clearCounter = clearCounter;
-        this.clearCounter.SetKitchenObject(this);
+        this.kitchenObjectParent = kitchenObjectParent;
+        this.kitchenObjectParent.SetKitchenObject(this);
 
         // Setting this transf as this KitchenObject's parent transform will apply the parent transform to it
-        transform.parent = clearCounter.GetKitchenObjectFollowTransform();
+        transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
         // remb to reset object's objectSpace to origin/zero just incase
         transform.localPosition = Vector3.zero; 
     }
