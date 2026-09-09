@@ -17,11 +17,19 @@ public class KitchenObject : MonoBehaviour {
     }
 
     public void SetClearCounter(ClearCounter clearCounter) {
+        if (this.clearCounter != null) {
+            this.clearCounter.ClearKitchenObject();
+        }
+
+        if (clearCounter.HasKitchenObject()) {
+            Debug.Log("Counter already has a kitchen object!");
+        }
         this.clearCounter = clearCounter;
-        // get the transform that will move the object to the new counter top point. 
+        this.clearCounter.SetKitchenObject(this);
+
         // Setting this transf as this KitchenObject's parent transform will apply the parent transform to it
         transform.parent = clearCounter.GetKitchenObjectFollowTransform();
-        // remb to re-set this object's objectSpace to origin/zero just incase
+        // remb to reset object's objectSpace to origin/zero just incase
         transform.localPosition = Vector3.zero; 
     }
 }

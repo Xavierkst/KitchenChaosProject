@@ -16,17 +16,14 @@ public class ClearCounter : MonoBehaviour {
             // even tho kitchen object has been set that it is being placed on second clear counter
             if (kitchenObject) {
                 kitchenObject.SetClearCounter(secondClearCounter);
-                Debug.Log(kitchenObject.GetClearCounter());
-            }
+            } 
         } 
     }
 
     public void interact() {
         if (!kitchenObject) {
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterTopPoint);
-            kitchenObjectTransform.localPosition = Vector3.zero;
-            kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
-            kitchenObject.SetClearCounter(this);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetClearCounter(this);
         } else {
             Debug.Log(kitchenObject.GetClearCounter());
         }
@@ -34,5 +31,20 @@ public class ClearCounter : MonoBehaviour {
 
     public Transform GetKitchenObjectFollowTransform() {
         return counterTopPoint;
+    }
+    public KitchenObject GetKitchenObject() {
+        return kitchenObject;
+    }
+
+    public void SetKitchenObject(KitchenObject kitchenObject) {
+        this.kitchenObject = kitchenObject;
+    }
+
+    public bool HasKitchenObject() {
+        return kitchenObject != null;
+    }
+
+    public void ClearKitchenObject() {
+        this.kitchenObject = null;
     }
 }
