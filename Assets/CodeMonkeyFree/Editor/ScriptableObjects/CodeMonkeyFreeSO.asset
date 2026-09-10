@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1788964669
+  lastShownTimestamp: 1789055048
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1788964669
+  checkedLastUpdateTimestamp: 1789055048
   lastQOTDResponse:
-    questionId: 340
-    questionText: What is the orthographicSize in a 2D camera?
-    answerA: Units visible horizontally
-    answerB: Units visible vertically
-    answerC: Half the units visible horizontally
-    answerD: Half the units visible vertically
+    questionId: 341
+    questionText: What is the difference between Action&lt;float&gt; and Func&lt;float&gt;
+      ?
+    answerA: Both are the same
+    answerB: Action&#60;float&#62; takes float parameter and Func&#60;float&#62;
+      returns float
+    answerC: Func&#60;float&#62; takes float parameter and Action&#60;float&#62;
+      returns float
+    answerD: 
     answerE: 
-  lastQotdTimestamp: 1788964669
+  lastQotdTimestamp: 1789055048
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleSep26Maksym.png
     topText: AWESOME Characters and Weapons 98% OFF! (Modern, Medieval, Fantasy,
@@ -36,11 +39,11 @@ MonoBehaviour:
     bottomText: Escape Tutorial Hell and level up your skills, try my Practice Lab
       for FREE!
     bottomLink: practicelab
-  lastDynamicHeaderTimestamp: 1788964669
+  lastDynamicHeaderTimestamp: 1789055048
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1788964669
+  websiteLatestMessageTimestamp: 1789055048
   websiteLatestVideos:
     videos:
     - youTubeId: xhOkkGbL3mY
@@ -52,4 +55,4 @@ MonoBehaviour:
       title: THIS is how you go from BEGINNER to ADVANCED!
     - youTubeId: XJBrzk7PR4o
       title: DON'T sell your game for $100!
-  websiteLatestVideosTimestamp: 1788964669
+  websiteLatestVideosTimestamp: 1789055048
