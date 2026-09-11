@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IKitchenObjectParent {
     public event EventHandler<OnCounterChangedEventArgs> OnSelectCounterChanged;
     public class OnCounterChangedEventArgs : EventArgs {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     }
 
     public static Player instance;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
 
-    private ClearCounter selectedCounter;
+    private BaseCounter selectedCounter;
     private KitchenObject kitchenObject;
 
     private float interactDist = 2f;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         bool withinInteractDist = Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDist, countersLayerMask);
         bool rayHitCounter = false;
         if (withinInteractDist) {
-            rayHitCounter = raycastHit.transform.TryGetComponent(out ClearCounter clearCounter);
+            rayHitCounter = raycastHit.transform.TryGetComponent(out BaseCounter clearCounter);
             if (rayHitCounter) {
                 if (clearCounter != selectedCounter) {
                     SetSelectedCounter(clearCounter);
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         }
     }
 
-    private void SetSelectedCounter(ClearCounter selectedCtr) {
+    private void SetSelectedCounter(BaseCounter selectedCtr) {
         this.selectedCounter = selectedCtr;
         OnSelectCounterChanged?.Invoke(this, new OnCounterChangedEventArgs { selectedCounter = this.selectedCounter });
     }
