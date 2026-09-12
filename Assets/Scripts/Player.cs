@@ -72,7 +72,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
                     SetSelectedCounter(clearCounter);
                 }
             } 
-        } 
+        }
         
         if (!withinInteractDist || !rayHitCounter) {
             SetSelectedCounter(null);
