@@ -32,4 +32,15 @@ public class KitchenObject : MonoBehaviour {
         // remb to reset object's objectSpace to origin/zero just incase
         transform.localPosition = Vector3.zero; 
     }
+    public void DestroySelf() {
+        this.kitchenObjectParent.ClearKitchenObject();
+        Destroy(this.gameObject);
+    }
+
+    public static KitchenObject SpawnKitchenObject(IKitchenObjectParent kitchenObjectParent, KitchenObjectSO kitchenObjectSO) {
+        Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
+        KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
+        kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
+        return kitchenObject;
+    }
 }

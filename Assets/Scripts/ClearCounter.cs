@@ -17,9 +17,7 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent {
             // if player is holding kitchenObj and ClearCounter is not, switch
             if (!player.HasKitchenObject()) {
                 GetKitchenObject().SetKitchenObjectParent(player);
-            } else {
-                // both parents have kitchen objects. Do nothing.
-            }
+            } 
         }
     }
 }

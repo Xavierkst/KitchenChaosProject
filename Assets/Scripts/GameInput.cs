@@ -7,12 +7,18 @@ public class GameInput : MonoBehaviour {
     // Start is called before the first frame update
     private PlayerInputActions playerInputActions;
     public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAlternateAction;
 
     private void Awake() {
         playerInputActions = new PlayerInputActions();
         // Enable the input actions map
         playerInputActions.Player.Enable();
         playerInputActions.Player.InteractCounter.performed += InteractCounter_performed;
+        playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
+    }
+
+    private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void InteractCounter_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
