@@ -7,6 +7,7 @@ public class CuttingCounter : BaseCounter {
     [SerializeField] private CuttingRecipeSO[] cuttingRecipeSOArray;
     private int cuttingProgress;
     public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+    public event EventHandler OnCuttingCmd;
 
     public class OnProgressChangedEventArgs : EventArgs {
         public float cuttingProgressNormalized;
@@ -37,7 +38,9 @@ public class CuttingCounter : BaseCounter {
             ++cuttingProgress;
             KitchenObjectSO inputKitchenObjectSO = GetKitchenObject().GetKitchenObjectSO();
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
-            
+            // Fire signal for cutting animation
+            OnCuttingCmd?.Invoke(this, EventArgs.Empty);
+            // Fire signal for Progress Bar visual
             OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs {
                 cuttingProgressNormalized = (float) cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
