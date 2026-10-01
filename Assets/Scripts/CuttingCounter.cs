@@ -19,9 +19,9 @@ public class CuttingCounter : BaseCounter {
                 player.GetKitchenObject().SetKitchenObjectParent(this);
                 // cuting progress restarts every time player picks it up and lays down again
                 cuttingProgress = 0;
-                CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(player.GetKitchenObject().GetKitchenObjectSO());
+                CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
                 OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs {
-                    cuttingProgressNormalized = (float) cuttingProgress / cuttingRecipeSO.cuttingProgressMax
+                    cuttingProgressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
                 });
             }
         } else {
