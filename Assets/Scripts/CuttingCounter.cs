@@ -8,7 +8,7 @@ public class CuttingCounter : BaseCounter {
     private int cuttingProgress;
     public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler OnCuttingCmd;
-
+    
     public class OnProgressChangedEventArgs : EventArgs {
         public float cuttingProgressNormalized;
     }
