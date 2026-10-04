@@ -11,7 +11,7 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent {
     }
 
     public virtual void InteractAlternate(Player player) {
-        Debug.LogError("CuttingCounter interact alt called.");
+        // Debug.LogError("Interact alt called.");
     }
 
     public void ClearKitchenObject() {
