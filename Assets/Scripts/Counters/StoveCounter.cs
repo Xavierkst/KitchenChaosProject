@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,29 +6,31 @@ using UnityEngine;
 public class StoveCounter : BaseCounter {
     [SerializeField] private CookingRecipeSO[] cookingRecipeSOArray;
     [SerializeField] private BurnedRecipeSO[] burnedRecipeSOArray;
+    public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
+    public class OnStateChangedEventArgs : EventArgs {
+        public State state;
+    }
+
     private float cookingProgress;
     private float burnedProgress;
     private CookingRecipeSO cookingRecipeSO;
     private BurnedRecipeSO burnedRecipeSO;
     private State state;
 
-    private enum State {
+    public enum State {
         Idle,
         Cooking,
         Cooked, 
         Burned
     }
-    public void Start() {
+    private void Start() {
         state = State.Idle;
     }
 
-    public void Update() {
+    private void Update() {
         if (HasKitchenObject()) {
             switch(state) {
                 case State.Idle:
-                    if (HasKitchenObject()) {
-                        state = State.Cooking;
-                    }
                     break;
                 case State.Cooking:
                     cookingProgress += Time.deltaTime;
@@ -35,6 +38,9 @@ public class StoveCounter : BaseCounter {
                         GetKitchenObject().DestroySelf();
                         KitchenObject.SpawnKitchenObject(this, GetCookingOutputForInput(cookingRecipeSO.input));
                         state = State.Cooked;
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs {
+                            state = State.Cooked
+                        });
                         // swap uncooked to cooked patty CookingRecipeSO
                         burnedRecipeSO = GetBurnedRecipeSOWithInput(cookingRecipeSO.output);
                         burnedProgress = 0f;
@@ -46,14 +52,12 @@ public class StoveCounter : BaseCounter {
                         GetKitchenObject().DestroySelf();
                         KitchenObject.SpawnKitchenObject(this, GetBurnedOutputForInput(burnedRecipeSO.input));
                         state = State.Burned;
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs {
+                            state = State.Burned
+                        });
                     }
                     break;
                 case State.Burned:
-                    if (!HasKitchenObject()) {
-                        state = State.Idle;
-                        cookingProgress = 0f;
-                        burnedProgress = 0f;
-                    }
                     break;
             }
             Debug.Log(state);
@@ -67,14 +71,25 @@ public class StoveCounter : BaseCounter {
             if (player.HasKitchenObject() && HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectSO())) {
                 player.GetKitchenObject().SetKitchenObjectParent(this);
                 cookingRecipeSO = GetCookingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
-                state = State.Cooking;
-                cookingProgress = 0f;
-                burnedProgress = 0f;
+                if (cookingRecipeSO) {
+                    state = State.Cooking;
+                    cookingProgress = 0f;
+                } else if (burnedRecipeSO = GetBurnedRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO())){
+                    state = State.Cooked;
+                    burnedProgress = 0f;
+                }
+
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs {
+                    state = this.state
+                });
             }
         } else {
             if (!player.HasKitchenObject()) {
                 GetKitchenObject().SetKitchenObjectParent(player);
                 state = State.Idle;
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs {
+                    state = State.Idle
+                });
             }
         }
     }
