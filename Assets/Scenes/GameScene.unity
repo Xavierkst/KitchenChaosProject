@@ -1380,10 +1380,15 @@ PrefabInstance:
       propertyPath: ShapeModule.type
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4114187535382502346, guid: 6b5a7e6a8b517c741b342caa3231a545,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     - target: {fileID: 4114187535382502348, guid: 6b5a7e6a8b517c741b342caa3231a545,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6484707869700233043, guid: 6b5a7e6a8b517c741b342caa3231a545,
         type: 3}
@@ -1448,7 +1453,7 @@ PrefabInstance:
     - target: {fileID: 8167262977727827013, guid: 6b5a7e6a8b517c741b342caa3231a545,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
