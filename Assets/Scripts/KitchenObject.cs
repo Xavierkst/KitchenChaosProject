@@ -29,7 +29,7 @@ public class KitchenObject : MonoBehaviour {
 
         // Setting this transf as this KitchenObject's parent transform will apply the parent transform to it
         transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
-        // remb to reset object's objectSpace to origin/zero just incase
+        // reset object's objectSpace to origin/zero just incase
         transform.localPosition = Vector3.zero; 
     }
     public void DestroySelf() {
