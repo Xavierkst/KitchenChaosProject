@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ProgressBarUI : MonoBehaviour {
-    [SerializeField] private GameObject hasProgressGameObject; // CuttingCounter object assigned here
+    [SerializeField] private GameObject hasProgressGameObject;
     [SerializeField] private Image barImage;
 
     private IHasProgress hasProgress;
