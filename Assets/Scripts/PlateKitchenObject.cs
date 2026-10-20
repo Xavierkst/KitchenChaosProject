@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlateKitchenObject : KitchenObject {
     private List<KitchenObjectSO> kitchenObjectSOList;
+    [SerializeField] private List<KitchenObjectSO> validKitchenObjectSOList;
     private int ingredientCount;
     private int ingredientCountMax = 3;
 
@@ -14,10 +15,21 @@ public class PlateKitchenObject : KitchenObject {
         ingredientCount = 0;
     }
 
-    public void AddIngredient(KitchenObjectSO kitchenObjectSO) {
-        if (kitchenObjectSO && ingredientCount < ingredientCountMax) {
-            kitchenObjectSOList.Add(kitchenObjectSO);
-            ++ingredientCount;
-         }
+    public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO) {
+        if (!validKitchenObjectSOList.Contains(kitchenObjectSO)) {
+            return false;
+        }
+
+        if (!kitchenObjectSO || isFull() || kitchenObjectSOList.Contains(kitchenObjectSO)) {
+            return false;
+        }
+
+        kitchenObjectSOList.Add(kitchenObjectSO);
+        ++ingredientCount;
+        return true;
+    }
+
+    public bool isFull() {
+        return ingredientCount >= ingredientCountMax;
     }
 }

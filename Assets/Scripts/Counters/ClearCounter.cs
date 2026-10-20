@@ -15,11 +15,19 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent {
             }
         } else {
             if (player.HasKitchenObject()) {
-                if (player.GetKitchenObject() is PlateKitchenObject) {
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
                     // add ingredient to the player's plate
-                    PlateKitchenObject plateKitchenObject = player.GetKitchenObject() as PlateKitchenObject;
-                    plateKitchenObject.AddIngredient(GetKitchenObject().GetKitchenObjectSO());
-                    GetKitchenObject().DestroySelf();
+                    if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO())) {
+                        GetKitchenObject().DestroySelf();
+                    }
+                } else {
+                    // Player is not holding a plate, and shld not be able to drop unchopped/non-ingredient
+                    // items onto the plate
+                    if (GetKitchenObject().TryGetPlate(out plateKitchenObject)) {
+                        if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO())) {
+                            player.GetKitchenObject().DestroySelf();
+                        }
+                    }
                 }
             } else {
                 GetKitchenObject().SetKitchenObjectParent(player);
