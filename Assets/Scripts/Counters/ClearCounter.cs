@@ -14,10 +14,16 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent {
                 // both don't have objects
             }
         } else {
-            // if player is holding kitchenObj and ClearCounter is not, switch
-            if (!player.HasKitchenObject()) {
+            if (player.HasKitchenObject()) {
+                if (player.GetKitchenObject() is PlateKitchenObject) {
+                    // add ingredient to the player's plate
+                    PlateKitchenObject plateKitchenObject = player.GetKitchenObject() as PlateKitchenObject;
+                    plateKitchenObject.AddIngredient(GetKitchenObject().GetKitchenObjectSO());
+                    GetKitchenObject().DestroySelf();
+                }
+            } else {
                 GetKitchenObject().SetKitchenObjectParent(player);
-            } 
+            }
         }
     }
 }

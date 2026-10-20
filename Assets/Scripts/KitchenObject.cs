@@ -32,6 +32,7 @@ public class KitchenObject : MonoBehaviour {
         // reset object's objectSpace to origin/zero just incase
         transform.localPosition = Vector3.zero; 
     }
+
     public void DestroySelf() {
         this.kitchenObjectParent.ClearKitchenObject();
         Destroy(this.gameObject);
