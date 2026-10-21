@@ -8,7 +8,6 @@ public class StoveCounterVisual : MonoBehaviour {
     [SerializeField] GameObject sizzlingParticlesGameObject;
 
     private void Start() {
-        // animator.GetComponent<Animator>();
         stoveCounter.OnStateChanged += StoveCounter_OnStateChanged;
     }
 
