@@ -34,6 +34,9 @@ public class PlateKitchenObject : KitchenObject {
             return false;
         }
 
+        // Is it needed to add logic to prevent a cooked and burnt patty
+        // to both be added into the burger?
+
         kitchenObjectSOList.Add(kitchenObjectSO);
         // Invoke event handler when ingredient successfully added
         OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs {
@@ -46,5 +49,9 @@ public class PlateKitchenObject : KitchenObject {
 
     public bool isFull() {
         return ingredientCount >= ingredientCountMax;
+    }
+    
+    public List<KitchenObjectSO> GetKitchenObjectSOList() {
+        return kitchenObjectSOList;
     }
 }
