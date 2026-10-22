@@ -5,6 +5,7 @@ using UnityEngine;
 public class CounterSelected : MonoBehaviour {
     [SerializeField] private BaseCounter baseCounter;
     [SerializeField] private GameObject[] visualGameObjectArray;
+
     private void Start() {
         Player.Instance.OnSelectCounterChanged += Player_OnSelectCounterChanged;
     }
@@ -16,6 +17,7 @@ public class CounterSelected : MonoBehaviour {
             Hide();
         }
     }
+
     private void Show() {
         foreach (GameObject visualGameObj in visualGameObjectArray) {
             visualGameObj.SetActive(true);

@@ -17,12 +17,12 @@ public class LookAtCamera : MonoBehaviour {
     private void LateUpdate() {
         switch (mode) {
             case Mode.LookAt:
-                // subtracts by the progressBarUI's pos under the hood of LookAt()
+                // Target pos passed in is the camera's position:
                 this.transform.LookAt(Camera.main.transform);
                 break;
             case Mode.LookAtInverted:
                 Vector3 dirFromCamera = transform.position - Camera.main.transform.position;
-                // subtracts by the progressBarUI's pos under the hood of LookAt()
+                // The target is opposite from the camera:
                 this.transform.LookAt(transform.position + dirFromCamera);
                 break;
             case Mode.CameraForward:
