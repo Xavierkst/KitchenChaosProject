@@ -1112,6 +1112,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 441375559502778098, guid: d9f4c4b090d60fb448a9e6873ddfadfa,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441375559502778098, guid: d9f4c4b090d60fb448a9e6873ddfadfa,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 924130887828131684, guid: d9f4c4b090d60fb448a9e6873ddfadfa,
         type: 3}
       propertyPath: m_RootOrder
