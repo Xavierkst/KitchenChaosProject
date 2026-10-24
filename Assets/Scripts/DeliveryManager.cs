@@ -38,6 +38,11 @@ public class DeliveryManager : MonoBehaviour {
     
     public bool DeliverRecipe(PlateKitchenObject plateKitchenObject) {
         foreach (RecipeSO recipeSO in waitingRecipeSOList) {
+            // Don't bother checking if the no. of ingredients aren't the same
+            if (recipeSO.kitchenObjectSOList.Count != plateKitchenObject.GetKitchenObjectSOList().Count) {
+                continue;
+            }
+
             // Check each ingredient on the plate and skip to next recipeSO as soon as one mismatch found
             bool isValidRecipe = true;
             foreach (KitchenObjectSO plateKitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList()) {
