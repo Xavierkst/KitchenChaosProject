@@ -12,8 +12,12 @@ public class DeliveryManager : MonoBehaviour {
     private float spawnRecipeTimerMax = 4f;
     private int waitingRecipesCountMax = 4;
 
+    // For UI
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
+    // For Audio
+    public event EventHandler OnRecipeSuccess;
+    public event EventHandler OnRecipeFailed;
 
     private void Awake() {
         Instance = this;
@@ -60,10 +64,12 @@ public class DeliveryManager : MonoBehaviour {
             if (isValidRecipe) {
                 waitingRecipeSOList.Remove(recipeSO);
                 OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+                OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
                 return true;
             }
         }
 
+        OnRecipeFailed?.Invoke(this, EventArgs.Empty);
         return false;
     }
 

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1792943380
+  lastShownTimestamp: 1793030052
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1792943380
+  checkedLastUpdateTimestamp: 1793030052
   lastQOTDResponse:
     questionId: 356
     questionText: Where are PlayerPrefs actually saved on Windows?
@@ -27,7 +27,7 @@ MonoBehaviour:
     answerC: Registry
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1792943380
+  lastQotdTimestamp: 1793030052
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/codeMonkeyEndOfSummerBundleOct26.png
     topText: Back for a limited time until the END OF SUMMER, 80% OFF all my Courses
@@ -35,11 +35,11 @@ MonoBehaviour:
     topLink: summerbundle
     bottomText: FREE Game Dev Insights every week straight to your inbox!
     bottomLink: gamedevreport
-  lastDynamicHeaderTimestamp: 1792943380
+  lastDynamicHeaderTimestamp: 1793030052
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1792943380
+  websiteLatestMessageTimestamp: 1793030052
   websiteLatestVideos:
     videos:
     - youTubeId: IOpC_qtcV_Q
@@ -50,4 +50,4 @@ MonoBehaviour:
       title: Unity is FINALLY moving to ONE Render Pipeline!
     - youTubeId: qjNGL4qQvrQ
       title: TOP 10 FREE NEW Assets OCTOBER 2026!
-  websiteLatestVideosTimestamp: 1792943380
+  websiteLatestVideosTimestamp: 1793030052

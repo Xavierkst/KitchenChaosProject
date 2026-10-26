@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DeliveryCounter : BaseCounter {
-    
-    // Event handler to send signal to DeliveryManager to deliver recipe
+    public static DeliveryCounter Instance { get; private set; }
+
+    private void Awake() {
+        Instance = this;
+    }
+
     public override void Interact(Player player) {
         if (player.HasKitchenObject()) {
             if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
