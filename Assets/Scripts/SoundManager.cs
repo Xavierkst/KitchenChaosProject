@@ -11,11 +11,11 @@ public class SoundManager : MonoBehaviour {
     }
 
     private void DeliveryManager_OnRecipeFailed(object sender, System.EventArgs e) {
-        PlaySound(audioClipRefSO.deliveryFail, Camera.main.transform.position);
+        PlaySound(audioClipRefSO.deliveryFail, DeliveryCounter.Instance.transform.position);
     }
 
     private void DeliveryManager_OnRecipeSuccess(object sender, System.EventArgs e) {
-        PlaySound(audioClipRefSO.deliverySuccess, Camera.main.transform.position);
+        PlaySound(audioClipRefSO.deliverySuccess, DeliveryCounter.Instance.transform.position);
     }
 
     private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f) {
