@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CuttingCounter : BaseCounter, IHasProgress {
     [SerializeField] private CuttingRecipeSO[] cuttingRecipeSOArray;
+    public static event EventHandler OnAnyCut;
     private int cuttingProgress;
     private ProgressBarUI progressBarUI;
     public event EventHandler OnCuttingCmd;
@@ -48,13 +49,14 @@ public class CuttingCounter : BaseCounter, IHasProgress {
             OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
                 progressNormalized = (float) cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
+            // Fire signal for chopping sound
+            OnAnyCut?.Invoke(this, EventArgs.Empty);
 
             if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax) {
                 KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(inputKitchenObjectSO);
                 GetKitchenObject().DestroySelf();
                 KitchenObject.SpawnKitchenObject(this, outputKitchenObjectSO);
             }
-
         }
     }
 

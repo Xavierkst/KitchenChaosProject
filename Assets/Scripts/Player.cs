@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IKitchenObjectParent {
     public event EventHandler<OnCounterChangedEventArgs> OnSelectCounterChanged;
+    public event EventHandler OnPlayerMove;
+    public event EventHandler OnObjectPickup;
+
     public class OnCounterChangedEventArgs : EventArgs {
         public BaseCounter selectedCounter;
     }
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         }
         Instance = this;
     }
+
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e) {
         if (selectedCounter != null) {
             selectedCounter.InteractAlternate(this);
@@ -128,6 +132,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         // where player is facing
         if (m_isWalking) {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
+            OnPlayerMove?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -143,6 +148,9 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
     public void SetKitchenObject(KitchenObject kitchenObject) {
         this.kitchenObject = kitchenObject;
+        if (this.kitchenObject != null) {
+            OnObjectPickup?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public bool HasKitchenObject() {
