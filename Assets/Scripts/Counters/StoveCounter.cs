@@ -71,7 +71,6 @@ public class StoveCounter : BaseCounter, IHasProgress {
                 case State.Burned:
                     break;
             }
-            // Debug.Log(state);
         }
     }
 
@@ -88,12 +87,14 @@ public class StoveCounter : BaseCounter, IHasProgress {
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
                         progressNormalized = cookingProgress / cookingRecipeSO.cookingProgressMax
                     });
+                    // Send signal to sound manager to play cooking sounds
                 } else if (burnedRecipeSO = GetBurnedRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO())){
                     state = State.Cooked;
                     burnedProgress = 0f;
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
                         progressNormalized = burnedProgress / burnedRecipeSO.burnedProgressMax
                     });
+                    // Send signal to sound manager to play warning sounds of overcooking
                 }
 
                 OnStateChanged?.Invoke(this, new OnStateChangedEventArgs {
