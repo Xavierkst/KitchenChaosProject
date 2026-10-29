@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerSound : MonoBehaviour {
     private Player player;
     private float footstepsTimer;
-    private float footstepsTimerMax = 0.4f;
-    public static event EventHandler OnPlayerMove;
+    private float footstepsTimerMax = 0.1f;
+    private float VOLUME = 1f;
 
     private void Awake() {
         player = GetComponent<Player>();
@@ -15,11 +15,12 @@ public class PlayerSound : MonoBehaviour {
 
     private void Update() {
         footstepsTimer -= Time.deltaTime;
+        // This body only runs every footstepsTimer num of seconds
         if (footstepsTimer < 0f) {
             footstepsTimer = footstepsTimerMax;
 
             if (player.IsWalking()) {
-                OnPlayerMove?.Invoke(this, EventArgs.Empty);
+                SoundManager.Instance.PlayFootstepsSound(player.transform.position, VOLUME);
             }
         }
     }

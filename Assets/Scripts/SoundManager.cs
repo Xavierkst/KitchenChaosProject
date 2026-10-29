@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
+    // Either make it a singleton or a SerializedField:
+    public static SoundManager Instance { get; private set; }
+
     [SerializeField] private AudioClipRefSO audioClipRefSO;
 
     private void Start() {
@@ -12,11 +15,9 @@ public class SoundManager : MonoBehaviour {
         Player.Instance.OnObjectPickup += Player_OnObjectPickup;
         BaseCounter.OnObjectPutdown += BaseCounter_OnObjectPutdown;
         TrashCounter.OnObjectTrashed += TrashCounter_OnObjectTrashed;
-        PlayerSound.OnPlayerMove += PlayerSound_OnPlayerMove;
     }
-
-    private void PlayerSound_OnPlayerMove(object sender, System.EventArgs e) {
-        PlaySound(audioClipRefSO.footstep, Player.Instance.transform.position);
+    private void Awake() {
+        Instance = this;
     }
 
     private void TrashCounter_OnObjectTrashed(object sender, System.EventArgs e) {
@@ -52,5 +53,8 @@ public class SoundManager : MonoBehaviour {
 
     private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 1f) {
         AudioSource.PlayClipAtPoint(audioClip, position, volume);
+    }
+    public void PlayFootstepsSound(Vector3 position, float volume) {
+        PlaySound(audioClipRefSO.footstep, position, volume);
     }
 }

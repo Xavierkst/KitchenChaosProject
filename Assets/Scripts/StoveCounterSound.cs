@@ -9,6 +9,7 @@ public class StoveCounterSound : MonoBehaviour {
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
     }
+
     private void Start() {
         stoveCounter.OnStateChanged += StoveCounter_OnStateChanged;
     }
@@ -21,5 +22,4 @@ public class StoveCounterSound : MonoBehaviour {
             audioSource.Pause();
         }
     }
-        
 }
