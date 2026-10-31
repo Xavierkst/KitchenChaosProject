@@ -15,7 +15,8 @@ public class GameMgr : MonoBehaviour {
     private State state;
     private float waitingToStartTimer = 1f;
     private float countdownToStartTimer = 3f;
-    private float gameStartedTimer = 5f;
+    private float gameStartedTimer;
+    private float gameStartedTimerMax = 40f;
 
     public event EventHandler OnGameStateChanged;
 
@@ -43,9 +44,9 @@ public class GameMgr : MonoBehaviour {
                 } 
                 break;
             case State.GameStarted:
-                gameStartedTimer -= Time.deltaTime;
-                if (gameStartedTimer <= 0f) {
-                    gameStartedTimer = 1f;
+                gameStartedTimer += Time.deltaTime;
+                if (gameStartedTimer >= gameStartedTimerMax) {
+                    gameStartedTimer = 0f;
                     state = State.GameOver;
                     OnGameStateChanged?.Invoke(this, EventArgs.Empty);
                 }
@@ -69,5 +70,11 @@ public class GameMgr : MonoBehaviour {
 
     public float GetCountdownToStartTimer() {
         return countdownToStartTimer;
+    }
+    public float GetGameStartedTimer() {
+        return gameStartedTimer;
+    }
+    public float GetGameStartedTimerNormalized() {
+        return gameStartedTimer / gameStartedTimerMax;
     }
 }
