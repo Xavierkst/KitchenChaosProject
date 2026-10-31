@@ -24,6 +24,7 @@ public class DeliveryManagerUI : MonoBehaviour {
         // Generate a new recipeTemplate object with the appropriate details about the recipe
         UpdateVisual();
     }
+
     private void UpdateVisual() {
         // Clear all pre-existing containers b4 regenerating new ones
         ClearAllRecipeTemplates();

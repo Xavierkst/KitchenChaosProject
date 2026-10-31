@@ -63,6 +63,9 @@ public class GameMgr : MonoBehaviour {
     public bool IsCountingDownToStart() {
         return state == State.CountdownToStart;
     }
+    public bool IsGameOver() {
+        return state == State.GameOver;
+    }
 
     public float GetCountdownToStartTimer() {
         return countdownToStartTimer;
