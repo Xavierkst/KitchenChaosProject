@@ -43,19 +43,29 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
     private void Awake() {
         lastInteractDir = transform.forward;
+
         if (Instance != null) {
             Debug.LogError("Player has more than one instance!");
         }
+
         Instance = this;
     }
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e) {
+        if (!GameMgr.Instance.IsGamePlaying()) {
+            return;
+        }
+
         if (selectedCounter != null) {
             selectedCounter.InteractAlternate(this);
         }
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
+        if (!GameMgr.Instance.IsGamePlaying()) {
+            return;
+        }
+
         if (selectedCounter != null) {
             selectedCounter.Interact(this);
         }
