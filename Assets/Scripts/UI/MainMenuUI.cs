@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,10 @@ public class MainMenuUI : MonoBehaviour {
     // Grab the Quit button and fire off quit when it gets clicked
     [SerializeField] private Button quitButton;
 
+
     private void Awake() {
         playButton.onClick.AddListener(() => {
-            SceneManager.LoadScene(1);
+            Loader.Load(Loader.Scene.GameScene);
         });
 
         quitButton.onClick.AddListener(() => {
