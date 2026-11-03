@@ -17,12 +17,18 @@ public class GameMgr : MonoBehaviour {
     private float countdownToStartTimer = 3f;
     private float gameStartedTimer;
     private float gameStartedTimerMax = 40f;
+    private bool gamePaused = false;
 
     public event EventHandler OnGameStateChanged;
 
     private void Awake() {
         Instance = this;
         this.state = State.WaitingToStart;
+        GameInput.Instance.OnPauseAction += Instance_OnPauseAction;
+    }
+
+    private void Instance_OnPauseAction(object sender, EventArgs e) {
+        TogglePauseGame();
     }
 
     private void Update() {
@@ -76,5 +82,16 @@ public class GameMgr : MonoBehaviour {
     }
     public float GetGameStartedTimerNormalized() {
         return gameStartedTimer / gameStartedTimerMax;
+    }
+
+    void TogglePauseGame() {
+        gamePaused = !gamePaused;
+
+        if (gamePaused) {
+            Time.timeScale = 0f;
+            return;
+        }
+
+        Time.timeScale = 1f;
     }
 }
