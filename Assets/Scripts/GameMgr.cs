@@ -24,6 +24,8 @@ public class GameMgr : MonoBehaviour {
     private void Awake() {
         Instance = this;
         this.state = State.WaitingToStart;
+    }
+    private void Start() {
         GameInput.Instance.OnPauseAction += Instance_OnPauseAction;
     }
 
