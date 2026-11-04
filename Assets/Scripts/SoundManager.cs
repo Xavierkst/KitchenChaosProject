@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour {
         BaseCounter.OnObjectPutdown += BaseCounter_OnObjectPutdown;
         TrashCounter.OnObjectTrashed += TrashCounter_OnObjectTrashed;
     }
+
     private void Awake() {
         Instance = this;
     }

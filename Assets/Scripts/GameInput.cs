@@ -21,6 +21,17 @@ public class GameInput : MonoBehaviour {
         playerInputActions.Player.Pause.performed += Pause_performed;
     }
 
+    private void OnDestroy() {
+        // Remove all old listeners
+        playerInputActions.Player.InteractCounter.performed -= InteractCounter_performed;
+        playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
+        playerInputActions.Player.Pause.performed -= Pause_performed;
+
+        // reconstruct new PlayerInputObject as well : destroy the old PlayerInputActions object
+        // so no unfreed memory
+        playerInputActions.Dispose();
+    }
+
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
         OnPauseAction?.Invoke(this, EventArgs.Empty);
     }

@@ -17,7 +17,6 @@ public class GamePausedUI : MonoBehaviour {
             Hide();
             Loader.Load(Loader.Scene.MainMenuScene);
         });
-
     }
     private void Start() {
         Hide();
