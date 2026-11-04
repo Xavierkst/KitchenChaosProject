@@ -90,7 +90,7 @@ public class GameMgr : MonoBehaviour {
         return gameStartedTimer / gameStartedTimerMax;
     }
 
-    void TogglePauseGame() {
+    public void TogglePauseGame() {
         gamePaused = !gamePaused;
 
         if (gamePaused) {
