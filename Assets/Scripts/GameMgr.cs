@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameMgr : MonoBehaviour {
     public static GameMgr Instance { get; private set; }
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnpaused;
+
     private enum State {
         WaitingToStart,
         CountdownToStart,
@@ -27,10 +30,10 @@ public class GameMgr : MonoBehaviour {
         gameStartedTimer = gameStartedTimerMax;
     }
     private void Start() {
-        GameInput.Instance.OnPauseAction += Instance_OnPauseAction;
+        GameInput.Instance.OnPauseAction += GameMgr_OnPauseAction;
     }
 
-    private void Instance_OnPauseAction(object sender, EventArgs e) {
+    private void GameMgr_OnPauseAction(object sender, EventArgs e) {
         TogglePauseGame();
     }
 
@@ -92,9 +95,11 @@ public class GameMgr : MonoBehaviour {
 
         if (gamePaused) {
             Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this, EventArgs.Empty);
             return;
         }
 
         Time.timeScale = 1f;
+        OnGameUnpaused?.Invoke(this, EventArgs.Empty);
     }
 }
