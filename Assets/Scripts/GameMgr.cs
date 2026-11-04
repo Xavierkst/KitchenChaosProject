@@ -24,6 +24,7 @@ public class GameMgr : MonoBehaviour {
     private void Awake() {
         Instance = this;
         this.state = State.WaitingToStart;
+        gameStartedTimer = gameStartedTimerMax;
     }
     private void Start() {
         GameInput.Instance.OnPauseAction += Instance_OnPauseAction;
@@ -52,9 +53,9 @@ public class GameMgr : MonoBehaviour {
                 } 
                 break;
             case State.GameStarted:
-                gameStartedTimer += Time.deltaTime;
-                if (gameStartedTimer >= gameStartedTimerMax) {
-                    gameStartedTimer = 0f;
+                gameStartedTimer -= Time.deltaTime;
+                if (gameStartedTimer <= 0f) {
+                    gameStartedTimer = gameStartedTimerMax;
                     state = State.GameOver;
                     OnGameStateChanged?.Invoke(this, EventArgs.Empty);
                 }

@@ -1052,7 +1052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0489d2ca53d809e44b0222e4534d8c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameInput: {fileID: 479635792}
 --- !u!4 &254847841
 Transform:
   m_ObjectHideFlags: 0
@@ -2405,7 +2404,7 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
