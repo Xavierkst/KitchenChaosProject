@@ -67,7 +67,6 @@ public class GameMgr : MonoBehaviour {
             case State.GameOver:
                 break;
         }
-        // Debug.Log(this.state);
     }
 
     public bool IsGamePlaying() {
@@ -96,20 +95,11 @@ public class GameMgr : MonoBehaviour {
 
         if (gamePaused) {
             Time.timeScale = 0f;
-            Debug.Log(OnGamePaused.GetInvocationList().Length);
             OnGamePaused?.Invoke(this, EventArgs.Empty);
             return;
         }
 
         Time.timeScale = 1f;
         OnGameUnpaused?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void ResetGameState() {
-        state = State.WaitingToStart;
-        waitingToStartTimer = 1f;
-        countdownToStartTimer = 3f;
-        gameStartedTimer = gameStartedTimerMax;
-        TogglePauseGame();
     }
 }

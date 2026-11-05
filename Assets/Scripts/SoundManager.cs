@@ -22,6 +22,10 @@ public class SoundManager : MonoBehaviour {
     }
 
     private void TrashCounter_OnObjectTrashed(object sender, System.EventArgs e) {
+        // Test if destroyed SoundManager can still be accessed via its position vector after 
+        // switching from gameScene -> MainMenu -> gameScene should destroy old sound Mgr and still 
+        // try to invoke fns from destroyed SoundMgr obj, and so an error shld occur for unreferenced 
+        // SoundManager object
         TrashCounter trashCounter = sender as TrashCounter;
         PlaySound(audioClipRefSO.trash, trashCounter.transform.position);
     }

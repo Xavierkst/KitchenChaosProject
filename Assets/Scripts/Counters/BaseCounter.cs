@@ -32,11 +32,14 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent {
         return this.kitchenObject != null;
     }
 
-
     public void SetKitchenObject(KitchenObject kitchenObject) {
         this.kitchenObject = kitchenObject;
         if (kitchenObject != null) {
             OnObjectPutdown?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    public static void ResetStaticData() {
+        OnObjectPutdown = null;
     }
 }

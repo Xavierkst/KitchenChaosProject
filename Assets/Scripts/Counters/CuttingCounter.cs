@@ -77,4 +77,8 @@ public class CuttingCounter : BaseCounter, IHasProgress {
         CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
         return cuttingRecipeSO ? cuttingRecipeSO.output : null;
     }
+
+    new public static void ResetStaticData() {
+        OnAnyCut = null;
+    }
 }
