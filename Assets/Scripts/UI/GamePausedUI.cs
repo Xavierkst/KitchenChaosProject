@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class GamePausedUI : MonoBehaviour {
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button optionsButton;
+    public static event EventHandler OnOptionsButtonClicked;
 
     private void Awake() {
         resumeButton.onClick.AddListener(() => {
@@ -14,10 +17,15 @@ public class GamePausedUI : MonoBehaviour {
         });
 
         mainMenuButton.onClick.AddListener(() => {
-            Hide();
+            Hide(); // do we need to hide if scene being destroyed?
             Loader.Load(Loader.Scene.MainMenuScene);
         });
+
+        optionsButton.onClick.AddListener(() => {
+            OnOptionsButtonClicked?.Invoke(this, EventArgs.Empty);
+        });
     }
+
     private void Start() {
         Hide();
         GameMgr.Instance.OnGamePaused += GameMgr_OnGamePaused;
