@@ -5,27 +5,39 @@ using UnityEngine.UI;
 using TMPro;
 
 public class GameOptionsUI : MonoBehaviour {
-    [SerializeField] private Button MusicVolumeButton;
-    [SerializeField] private TextMeshProUGUI MusicVolumeText;
-    [SerializeField] private Button SoundEffectsButton;
-    [SerializeField] private TextMeshProUGUI SoundEffectsText;
-    [SerializeField] private Button CloseOptionsButton;
+    public static GameOptionsUI Instance { get; private set; }
+
+    [SerializeField] private Button musicVolumeButton;
+    [SerializeField] private TextMeshProUGUI musicVolumeText;
+    [SerializeField] private Button soundEffectsButton;
+    [SerializeField] private TextMeshProUGUI soundEffectsText;
+    [SerializeField] private Button closeOptionsButton;
 
     private void Awake() {
-        MusicVolumeButton.onClick.AddListener(() => {
+        Instance = this;
+        musicVolumeButton.onClick.AddListener(() => {
             MusicManager.Instance.ChangeVolume();
             UpdateVisual();
         });
 
-        SoundEffectsButton.onClick.AddListener(() => {
+        soundEffectsButton.onClick.AddListener(() => {
             SoundManager.Instance.ChangeVolume();
             UpdateVisual();
         });
 
-        CloseOptionsButton.onClick.AddListener(() => {
+        closeOptionsButton.onClick.AddListener(() => {
             Hide();
         });
+    }
 
+    private void UpdateVisual() {
+        musicVolumeText.text = "MUSIC: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+        soundEffectsText.text = "SOUND EFFECTS: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
+    }
+
+    private void Start() {
+        UpdateVisual();
+        Hide();
         GameMgr.Instance.OnGameUnpaused += GameMgr_OnGameUnpaused;
     }
 
@@ -33,32 +45,11 @@ public class GameOptionsUI : MonoBehaviour {
         Hide();
     }
 
-    private void UpdateVisual() {
-        MusicVolumeText.text = "MUSIC: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
-        SoundEffectsText.text = "SOUND EFFECTS: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
-    }
-
-    private void Start() {
-        Hide();
-        UpdateVisual();
-        GamePausedUI.OnOptionsButtonClicked += GamePausedUI_OnOptionsButtonClicked;
-    }
-
-    private void GamePausedUI_OnOptionsButtonClicked(object sender, System.EventArgs e) {
-        Show();
-    }
-
-    // Make another listener for when user closes options menu to hide
-
     private void Hide() {
         gameObject.SetActive(false);
     }
 
-    private void Show() {
+    public void Show() {
         gameObject.SetActive(true);
-    }
-    private void OnDestroy() {
-        MusicVolumeButton.onClick.RemoveAllListeners();
-        SoundEffectsButton.onClick.RemoveAllListeners();
     }
 }

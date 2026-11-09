@@ -4469,11 +4469,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afae7db53a0eff41916b2c0f4b01db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicVolumeButton: {fileID: 1810348387}
-  MusicVolumeText: {fileID: 2033782507}
-  SoundEffectsButton: {fileID: 560035895}
-  SoundEffectsText: {fileID: 1127782895}
-  CloseOptionsButton: {fileID: 550882599}
+  musicVolumeButton: {fileID: 1810348387}
+  musicVolumeText: {fileID: 2033782507}
+  soundEffectsButton: {fileID: 560035895}
+  soundEffectsText: {fileID: 1127782895}
+  closeOptionsButton: {fileID: 550882599}
 --- !u!4 &1123732438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 924130887828131684, guid: d9f4c4b090d60fb448a9e6873ddfadfa,

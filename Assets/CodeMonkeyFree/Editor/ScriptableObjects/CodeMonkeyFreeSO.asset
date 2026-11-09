@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1794128587
+  lastShownTimestamp: 1794243954
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1794128587
+  checkedLastUpdateTimestamp: 1794243954
   lastQOTDResponse:
-    questionId: 360
-    questionText: What is the purpose of Unity Hub?
-    answerA: Provide a space for the community to interact
-    answerB: Manage different Unity versions and Projects
-    answerC: Dashboard for Unity services
+    questionId: 361
+    questionText: What is the purpose of using Time.deltaTime?
+    answerA: Random movement
+    answerB: Faster performance
+    answerC: Framerate independence
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1794128587
+  lastQotdTimestamp: 1794243954
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/codeMonkeyEndOfSummerBundleOct26.png
     topText: Back for a limited time until the END OF SUMMER, 80% OFF all my Courses
@@ -35,11 +35,11 @@ MonoBehaviour:
     topLink: summerbundle
     bottomText: FREE Game Dev Insights every week straight to your inbox!
     bottomLink: gamedevreport
-  lastDynamicHeaderTimestamp: 1794128587
+  lastDynamicHeaderTimestamp: 1794243954
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1794128587
+  websiteLatestMessageTimestamp: 1794243954
   websiteLatestVideos:
     videos:
     - youTubeId: 6HsAEaBkpLg
@@ -50,4 +50,4 @@ MonoBehaviour:
       title: BEST NEW Visual Assets to INSPIRE YOU! (OCTOBER 2026)
     - youTubeId: 6DDIfmMYYFs
       title: 'Cards: Tidy Up! [Demo Out Now]'
-  websiteLatestVideosTimestamp: 1794128587
+  websiteLatestVideosTimestamp: 1794243954
