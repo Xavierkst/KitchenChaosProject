@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour {
     // Either make it a singleton or a SerializedField:
     public static SoundManager Instance { get; private set; }
     [SerializeField] private AudioClipRefSO audioClipRefSO;
-    private float volume = 0.3f;
+    private float volume = 1f;
     private const string PLAYER_PREFS_SOUND_VOLUME = "SoundVolume";
 
     private void Start() {
@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
-        this.volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_VOLUME);
+        this.volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_VOLUME, 1f);
     }
 
     private void TrashCounter_OnObjectTrashed(object sender, System.EventArgs e) {

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour {
     public static MusicManager Instance { get; private set; }
-    private float volume = 0.3f;
     private const string PLAYER_PREFS_MUSIC_VOLUME = "MusicVolume";
 
     private AudioSource audioSource;
+    private float volume = 0.3f;
+
     private void Awake() {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
-        this.volume = PlayerPrefs.GetFloat(PLAYER_PREFS_MUSIC_VOLUME);
+        this.volume = PlayerPrefs.GetFloat(PLAYER_PREFS_MUSIC_VOLUME, 0.3f);
+        audioSource.volume = volume;
     }
 
     public void ChangeVolume() {
