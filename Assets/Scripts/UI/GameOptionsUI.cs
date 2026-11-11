@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,10 +38,10 @@ public class GameOptionsUI : MonoBehaviour {
 
 
     [SerializeField] private Transform rebindKeyBackground;
+    private Action onCloseButtonAction;
 
     private void Awake() {
         Instance = this;
-        HideRebindKeyBackground();
         musicVolumeButton.onClick.AddListener(() => {
             MusicManager.Instance.ChangeVolume();
             UpdateVisual();
@@ -53,6 +54,7 @@ public class GameOptionsUI : MonoBehaviour {
 
         closeOptionsButton.onClick.AddListener(() => {
             Hide();
+            this.onCloseButtonAction();
         });
 
         MoveUpRebindButton.onClick.AddListener(() => {
@@ -113,6 +115,7 @@ public class GameOptionsUI : MonoBehaviour {
     }
 
     private void Start() {
+        HideRebindKeyBackground();
         GameMgr.Instance.OnGameUnpaused += GameMgr_OnGameUnpaused;
         UpdateVisual();
         Hide();
@@ -126,8 +129,10 @@ public class GameOptionsUI : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void Show() {
+    public void Show(Action onCloseButtonAction) {
+        this.onCloseButtonAction = onCloseButtonAction;
         gameObject.SetActive(true);
+        musicVolumeButton.Select();
     }
 
     private void ShowRebindKeyBackground() {
