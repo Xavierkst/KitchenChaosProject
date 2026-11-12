@@ -15,7 +15,8 @@ public class PlatesCounter : BaseCounter {
 
     private void Update() {
         spawnPlateTimer += Time.deltaTime;
-        if (spawnPlateTimer > spawnPlateTimerMax) {
+        // Prevent recipes from spawning prior to game start state
+        if (GameMgr.Instance.IsGameStarted() && spawnPlateTimer > spawnPlateTimerMax) {
             spawnPlateTimer = 0f;
             if (platesSpawnedAmount < platesSpawnedAmountMax) {
                 ++platesSpawnedAmount;

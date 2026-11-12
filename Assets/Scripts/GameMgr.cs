@@ -16,7 +16,6 @@ public class GameMgr : MonoBehaviour {
     }
 
     private State state;
-    private float waitingToStartTimer = 1f;
     private float countdownToStartTimer = 3f;
     private float gameStartedTimer;
     private float gameStartedTimerMax = 40f;
@@ -30,8 +29,16 @@ public class GameMgr : MonoBehaviour {
         gameStartedTimer = gameStartedTimerMax;
     }
 
+    private void GameMgr_OnInteractAction(object sender, EventArgs e) {
+        if (state == State.WaitingToStart && !isGamePaused()) {
+            state = State.CountdownToStart;
+            OnGameStateChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
     private void Start() {
         GameInput.Instance.OnPauseAction += GameMgr_OnPauseAction;
+        GameInput.Instance.OnInteractAction += GameMgr_OnInteractAction;
     }
 
     private void GameMgr_OnPauseAction(object sender, EventArgs e) {
@@ -41,12 +48,6 @@ public class GameMgr : MonoBehaviour {
     private void Update() {
         switch(state) {
             case State.WaitingToStart:
-                waitingToStartTimer -= Time.deltaTime;
-                if (waitingToStartTimer <= 0f) {
-                    waitingToStartTimer = 1f;
-                    state = State.CountdownToStart;
-                    OnGameStateChanged?.Invoke(this, EventArgs.Empty);
-                }
                 break;
             case State.CountdownToStart:
                 countdownToStartTimer -= Time.deltaTime;
@@ -69,11 +70,11 @@ public class GameMgr : MonoBehaviour {
         }
     }
 
-    public bool IsGamePlaying() {
+    public bool IsGameStarted() {
         return state == State.GameStarted;
     }
 
-    public bool IsCountingDownToStart() {
+    public bool IsCountdownToStartActive() {
         return state == State.CountdownToStart;
     }
     public bool IsGameOver() {
@@ -88,6 +89,9 @@ public class GameMgr : MonoBehaviour {
     }
     public float GetGameStartedTimerNormalized() {
         return gameStartedTimer / gameStartedTimerMax;
+    }
+    public bool isGamePaused() {
+        return gamePaused;
     }
 
     public void TogglePauseGame() {

@@ -52,7 +52,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
     }
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e) {
-        if (!GameMgr.Instance.IsGamePlaying()) {
+        if (!GameMgr.Instance.IsGameStarted() || GameMgr.Instance.isGamePaused()) {
             return;
         }
 
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
-        if (!GameMgr.Instance.IsGamePlaying()) {
+        if (!GameMgr.Instance.IsGameStarted() || GameMgr.Instance.isGamePaused()) {
             return;
         }
 
@@ -91,7 +91,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
             if (rayHitCounter) {
                 if (clearCounter != selectedCounter) {
                     SetSelectedCounter(clearCounter);
-                    // Set the player's forward to face the counter it's interacting with
                     
                 }
             } 

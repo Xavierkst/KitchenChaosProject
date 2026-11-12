@@ -28,10 +28,11 @@ public class DeliveryManager : MonoBehaviour {
 
     private void Update() {
         spawnRecipeTimer -= Time.deltaTime;
+        // Prevent recipes from spawning prior to game start state 
         if (spawnRecipeTimer <= 0f) {
             spawnRecipeTimer = spawnRecipeTimerMax;
             // Spawn random recipe from waitingRecipeSOList
-            if (waitingRecipeSOList.Count < waitingRecipesCountMax) {
+            if (GameMgr.Instance.IsGameStarted() && waitingRecipeSOList.Count < waitingRecipesCountMax) {
                 RecipeSO waitingRecipeSO = GenerateRandomRecipeSO();
                 if (waitingRecipeSO) {
                     Debug.Log(waitingRecipeSO.name);

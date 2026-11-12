@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1794330386
+  lastShownTimestamp: 1794462147
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1794330386
+  checkedLastUpdateTimestamp: 1794462147
   lastQOTDResponse:
     questionId: 361
     questionText: What is the purpose of using Time.deltaTime?
@@ -27,7 +27,7 @@ MonoBehaviour:
     answerC: Framerate independence
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1794330386
+  lastQotdTimestamp: 1794462147
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/codeMonkeyEndOfSummerBundleOct26.png
     topText: Back for a limited time until the END OF SUMMER, 80% OFF all my Courses
@@ -35,11 +35,11 @@ MonoBehaviour:
     topLink: summerbundle
     bottomText: FREE Game Dev Insights every week straight to your inbox!
     bottomLink: gamedevreport
-  lastDynamicHeaderTimestamp: 1794330386
+  lastDynamicHeaderTimestamp: 1794462147
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1794330386
+  websiteLatestMessageTimestamp: 1794462147
   websiteLatestVideos:
     videos:
     - youTubeId: dkIfY7svIpg
@@ -50,4 +50,4 @@ MonoBehaviour:
       title: Does Unity CANCEL their features?
     - youTubeId: uYqLWurQqy0
       title: BEST NEW Visual Assets to INSPIRE YOU! (OCTOBER 2026)
-  websiteLatestVideosTimestamp: 1794330386
+  websiteLatestVideosTimestamp: 1794462147

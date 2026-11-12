@@ -11,6 +11,7 @@ public class GameInput : MonoBehaviour {
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractAlternateAction;
     public event EventHandler OnPauseAction;
+    public event EventHandler OnRebindBinding;
     private const string PLAYER_PREFS_BINDINGS = "InputBindings";
 
     public enum Binding {
@@ -36,7 +37,6 @@ public class GameInput : MonoBehaviour {
         if (PlayerPrefs.HasKey(PLAYER_PREFS_BINDINGS)) {
             playerInputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
         }
-        // playerInputActions.LoadBindingOverridesFromJson(PLAYER_PREFS_REBIND_BINDINGS);
 
         // Enable the input actions map
         playerInputActions.Player.Enable();
@@ -154,8 +154,11 @@ public class GameInput : MonoBehaviour {
                 callback.Dispose();
                 playerInputActions.Player.Enable();
                 onActionRebound();
+
                 PlayerPrefs.SetString(PLAYER_PREFS_BINDINGS, playerInputActions.SaveBindingOverridesAsJson());
                 PlayerPrefs.Save();
+
+                OnRebindBinding?.Invoke(this, EventArgs.Empty);
             }).Start();
         }
 }

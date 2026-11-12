@@ -18,7 +18,7 @@ public class CountdownText : MonoBehaviour {
     }
 
     private void GameMgr_OnGameStateChanged(object sender, System.EventArgs e) {
-        if (GameMgr.Instance.IsCountingDownToStart()) {
+        if (GameMgr.Instance.IsCountdownToStartActive()) {
             Show();
             return;
         }
