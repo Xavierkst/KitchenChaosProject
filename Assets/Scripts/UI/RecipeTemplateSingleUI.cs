@@ -12,6 +12,7 @@ public class RecipeTemplateSingleUI : MonoBehaviour {
     private void Awake() {
         iconTemplate.gameObject.SetActive(false);
     }
+
     public void SetRecipeSO(RecipeSO recipeSO) {
         recipeNameText.text = recipeSO.recipeName;
         // Clear existing icon container images for a given recipeUI 

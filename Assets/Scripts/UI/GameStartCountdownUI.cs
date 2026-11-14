@@ -5,16 +5,29 @@ using TMPro;
 
 public class CountdownText : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI countdownText;
+    private Animator animator;
+    int prevCountdownNum = 4;
+    private string NUMBER_POPUP = "NumberPopup";
     
     private void Awake() {
-        countdownText.text = "3";
-        Hide();
+        animator = GetComponent<Animator>();
     }
+
     private void Start() {
         GameMgr.Instance.OnGameStateChanged += GameMgr_OnGameStateChanged;
+        Hide();
     }
+
     private void Update() {
-        countdownText.text = Mathf.Ceil(GameMgr.Instance.GetCountdownToStartTimer()).ToString();
+        int currCountdownNum = Mathf.CeilToInt(GameMgr.Instance.GetCountdownToStartTimer());
+        countdownText.text = currCountdownNum.ToString();
+        if (GameMgr.Instance.IsCountdownToStartActive() && currCountdownNum != prevCountdownNum) {
+            prevCountdownNum = currCountdownNum;
+            // trigger animation
+            animator.SetTrigger(NUMBER_POPUP);
+            // trigger sound on sound manager
+            SoundManager.Instance.PlayCountdownSound();
+        }
     }
 
     private void GameMgr_OnGameStateChanged(object sender, System.EventArgs e) {

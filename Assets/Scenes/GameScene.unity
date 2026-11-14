@@ -10145,8 +10145,8 @@ RectTransform:
   - {fileID: 1374206215}
   - {fileID: 1922176827}
   - {fileID: 1081541006}
-  - {fileID: 870932579}
   - {fileID: 1902079457}
+  - {fileID: 870932579}
   - {fileID: 1122621790}
   - {fileID: 1315870460}
   m_Father: {fileID: 0}
@@ -10964,6 +10964,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1374206215}
   - component: {fileID: 1374206216}
+  - component: {fileID: 1374206218}
+  - component: {fileID: 1374206217}
   m_Layer: 5
   m_Name: GameStartCountdownUI
   m_TagString: Untagged
@@ -10981,7 +10983,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1101954573}
   m_Father: {fileID: 1172282749}
@@ -11005,6 +11007,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1101954574}
+--- !u!225 &1374206217
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374206214}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &1374206218
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374206214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 439c4b4a5d53b7a4bb1dcf85936a2f83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1396599395
 GameObject:
   m_ObjectHideFlags: 0

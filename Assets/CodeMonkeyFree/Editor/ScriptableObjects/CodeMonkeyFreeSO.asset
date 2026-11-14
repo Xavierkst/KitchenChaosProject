@@ -14,20 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1794462147
+  lastShownTimestamp: 1794669744
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1794462147
+  checkedLastUpdateTimestamp: 1794669744
   lastQOTDResponse:
-    questionId: 361
-    questionText: What is the purpose of using Time.deltaTime?
-    answerA: Random movement
-    answerB: Faster performance
-    answerC: Framerate independence
+    questionId: 362
+    questionText: 'When would this code cause an error?
+
+      <p>Building closest
+      = null;</p>
+
+      <p>for (int i = 0; i &lt; instanceList.Count; i++) {</p>
+
+      <p>&nbsp;
+      &nbsp; if (Vector3.Distance(position, instanceList[i].GetPosition()) &lt; Vector3.Distance(position,
+      closest.GetPosition())) {</p>
+
+      <p>&nbsp; &nbsp; &nbsp; &nbsp; closest
+      = instanceList[i];</p>
+
+      <p>&nbsp; &nbsp; }</p>
+
+      <p>}</p>
+
+      <p>return
+      closest;</p>'
+    answerA: When instanceList is empty
+    answerB: When instanceList has at least one element
+    answerC: When instanceList has exactly two elements
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1794462147
+  lastQotdTimestamp: 1794669744
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/codeMonkeyEndOfSummerBundleOct26.png
     topText: Back for a limited time until the END OF SUMMER, 80% OFF all my Courses
@@ -35,19 +54,19 @@ MonoBehaviour:
     topLink: summerbundle
     bottomText: FREE Game Dev Insights every week straight to your inbox!
     bottomLink: gamedevreport
-  lastDynamicHeaderTimestamp: 1794462147
+  lastDynamicHeaderTimestamp: 1794669744
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1794462147
+  websiteLatestMessageTimestamp: 1794669744
   websiteLatestVideos:
     videos:
+    - youTubeId: WhWutMiW1lI
+      title: My 10th Steam game is out! Why am I both HAPPY and SAD?
     - youTubeId: dkIfY7svIpg
       title: TOP 10 NEW Games, Made with Unity! (OCTOBER 2026)
     - youTubeId: 6HsAEaBkpLg
       title: How a PRO builds a Weapon System!
     - youTubeId: HZjtgeSpmPU
       title: Does Unity CANCEL their features?
-    - youTubeId: uYqLWurQqy0
-      title: BEST NEW Visual Assets to INSPIRE YOU! (OCTOBER 2026)
-  websiteLatestVideosTimestamp: 1794462147
+  websiteLatestVideosTimestamp: 1794669744
