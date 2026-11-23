@@ -8,7 +8,7 @@ public class CountdownText : MonoBehaviour {
     private Animator animator;
     int prevCountdownNum = 4;
     private string NUMBER_POPUP = "NumberPopup";
-    
+
     private void Awake() {
         animator = GetComponent<Animator>();
     }

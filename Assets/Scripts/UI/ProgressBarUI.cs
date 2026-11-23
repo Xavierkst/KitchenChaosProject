@@ -26,10 +26,6 @@ public class ProgressBarUI : MonoBehaviour {
         } else {
             Show();
         }
-
-        // if (e.progressNormalized > 0.8f) {
-        //     BlinkingBurnWarning();
-        // }
     }
 
     public void setProgressBar(float progress) {
@@ -50,11 +46,4 @@ public class ProgressBarUI : MonoBehaviour {
     public void HideBurnWarning() {
         burnWarning.gameObject.SetActive(false);
     }
-    
-    public void BlinkingBurnWarning() {
-        // float blinkDuration = 0f;
-        // if (blinkDuration >= blinkDurationMax) {
-
-        // }
-    }
-}
+ }

@@ -25,6 +25,7 @@ public class StoveCounter : BaseCounter, IHasProgress {
         Cooked, 
         Burned
     }
+
     private void Start() {
         state = State.Idle;
     }

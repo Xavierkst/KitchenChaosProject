@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class StoveBurnWarningUI : MonoBehaviour {
     [SerializeField] private StoveCounter stoveCounter;
-
-    private void Awake() {
-        stoveCounter.OnProgressChanged += StoveCounter_OnProgressChanged;
-    }
+    private bool flashBurnWarning;
 
     private void StoveCounter_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e) {
         float burnWarningProgressAmount = 0.5f;
-        bool show = e.progressNormalized > burnWarningProgressAmount;
-        if (stoveCounter.IsCooked() && show) {
+        bool show = e.progressNormalized >= burnWarningProgressAmount;
+        flashBurnWarning = stoveCounter.IsCooked() && show;
+
+        if (flashBurnWarning) {
             Show();
             return;
-        }
+        } 
+
         Hide();
     }
 
     private void Start() {
+        stoveCounter.OnProgressChanged += StoveCounter_OnProgressChanged;
         Hide();
-        
     }
+
     private void Show() {
         gameObject.SetActive(true);
     }
