@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ProgressBarUI : MonoBehaviour {
     [SerializeField] private GameObject hasProgressGameObject;
     [SerializeField] private Image barImage;
+    [SerializeField] private Image burnWarning;
 
     private IHasProgress hasProgress;
     public void Start() {
@@ -25,6 +26,10 @@ public class ProgressBarUI : MonoBehaviour {
         } else {
             Show();
         }
+
+        // if (e.progressNormalized > 0.8f) {
+        //     BlinkingBurnWarning();
+        // }
     }
 
     public void setProgressBar(float progress) {
@@ -37,5 +42,19 @@ public class ProgressBarUI : MonoBehaviour {
 
     public void Hide() {
         gameObject.SetActive(false);
+    }
+    public void ShowBurnWarning() {
+        burnWarning.gameObject.SetActive(true);
+    }
+
+    public void HideBurnWarning() {
+        burnWarning.gameObject.SetActive(false);
+    }
+    
+    public void BlinkingBurnWarning() {
+        // float blinkDuration = 0f;
+        // if (blinkDuration >= blinkDurationMax) {
+
+        // }
     }
 }

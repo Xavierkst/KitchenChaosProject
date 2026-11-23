@@ -7438,6 +7438,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9712061}
     m_Modifications:
+    - target: {fileID: 906014505844837562, guid: 6b5a7e6a8b517c741b342caa3231a545,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 906014505844837562, guid: 6b5a7e6a8b517c741b342caa3231a545,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4114187535382502346, guid: 6b5a7e6a8b517c741b342caa3231a545,
         type: 3}
       propertyPath: ShapeModule.type
@@ -7512,6 +7522,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StoveCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259900723877933810, guid: 6b5a7e6a8b517c741b342caa3231a545,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259900723877933810, guid: 6b5a7e6a8b517c741b342caa3231a545,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8167262977727827013, guid: 6b5a7e6a8b517c741b342caa3231a545,
         type: 3}

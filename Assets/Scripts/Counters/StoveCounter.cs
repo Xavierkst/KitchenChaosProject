@@ -162,4 +162,8 @@ public class StoveCounter : BaseCounter, IHasProgress {
         return burnedRecipeSO ? burnedRecipeSO.output : null;
     }
 
+    public bool IsCooked() {
+        return state == State.Cooked;
+    }
+
 }
