@@ -10,6 +10,7 @@ public class DeliveryManagerUI : MonoBehaviour {
     private void Awake() {
         recipeTemplate.gameObject.SetActive(false);
     }
+
     private void Start() {
         DeliveryManager.Instance.OnRecipeSpawned += DeliveryManager_OnRecipeGenerated;
         DeliveryManager.Instance.OnRecipeCompleted += DeliveryManager_OnRecipeCompleted;
