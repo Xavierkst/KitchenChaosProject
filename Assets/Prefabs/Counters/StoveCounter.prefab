@@ -652,11 +652,68 @@ PrefabInstance:
       propertyPath: hasProgressGameObject
       value: 
       objectReference: {fileID: 6484707869700233053}
+    - target: {fileID: 8712671613477101773, guid: f2ffb1d2ebb35ab42acf53630b1da93d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.1425418
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712671613477101773, guid: f2ffb1d2ebb35ab42acf53630b1da93d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5529412
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4156944479092337605, guid: f2ffb1d2ebb35ab42acf53630b1da93d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5152463382456900876}
+    - targetCorrespondingSourceObject: {fileID: 4156944479092337605, guid: f2ffb1d2ebb35ab42acf53630b1da93d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1496544814658350540}
   m_SourcePrefab: {fileID: 100100000, guid: f2ffb1d2ebb35ab42acf53630b1da93d, type: 3}
+--- !u!1 &3146714535411296403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4156944479092337605, guid: f2ffb1d2ebb35ab42acf53630b1da93d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1304652769745847126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5152463382456900876
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146714535411296403}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94206ff2e4d17b54b833db6cc0b74d49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1496544814658350540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146714535411296403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff88a6f28ba50e42b97baefd2671fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoveCounter: {fileID: 1739399883309043634}
 --- !u!224 &3358650002109018321 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4361556648599024519, guid: f2ffb1d2ebb35ab42acf53630b1da93d,

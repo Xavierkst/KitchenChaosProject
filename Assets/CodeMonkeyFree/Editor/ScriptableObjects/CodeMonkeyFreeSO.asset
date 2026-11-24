@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1795421040
+  lastShownTimestamp: 1795538169
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1795421040
+  checkedLastUpdateTimestamp: 1795538169
   lastQOTDResponse:
     questionId: 365
     questionText: 'What is the possible error in this code:
@@ -42,7 +42,7 @@ MonoBehaviour:
     answerC: 2 ticks at once
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1795421040
+  lastQotdTimestamp: 1795538169
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/codeMonkeyEndOfSummerBundleOct26.png
     topText: Back for a limited time until the END OF SUMMER, 80% OFF all my Courses
@@ -50,19 +50,19 @@ MonoBehaviour:
     topLink: summerbundle
     bottomText: FREE Game Dev Insights every week straight to your inbox!
     bottomLink: gamedevreport
-  lastDynamicHeaderTimestamp: 1795421040
+  lastDynamicHeaderTimestamp: 1795538169
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1795421040
+  websiteLatestMessageTimestamp: 1795538169
   websiteLatestVideos:
     videos:
+    - youTubeId: uxMTXmWcF48
+      title: Why AI Skills are a GAME CHANGER for your Assets!
     - youTubeId: XX99tMlUcZw
       title: My thoughts on AI Game Dev and the future of this channel.
     - youTubeId: Um0NY3AYAcY
       title: TOP 10 FREE NEW Assets NOVEMBER 2026!
     - youTubeId: nhx0FqRDSjM
       title: 2027 will be the BEST year for Unity! (and $500,000 for indie devs!)
-    - youTubeId: ZXANmGW_D20
-      title: How to Publish your Game on Steam! (FREE Course)
-  websiteLatestVideosTimestamp: 1795421040
+  websiteLatestVideosTimestamp: 1795538169
