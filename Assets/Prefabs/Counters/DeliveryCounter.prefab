@@ -354,9 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df97a065259f9ad47a3c5574f6b70713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 0}
-  iconImage: {fileID: 0}
-  message: {fileID: 0}
+  backgroundImage: {fileID: 3567622948445900648}
+  iconImage: {fileID: 2589046631538856111}
+  message: {fileID: 2784132195954549033}
   successColor: {r: 0.03529412, g: 0.69803923, b: 0.17254902, a: 1}
   failedColor: {r: 0.7924528, g: 0.10017798, b: 0.10017798, a: 1}
   successSprite: {fileID: 21300000, guid: 6c562ac6d3e47ff4794df31886c6d864, type: 3}
